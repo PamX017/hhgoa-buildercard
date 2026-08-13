@@ -128,7 +128,7 @@ function renderTextLayers(ctx, { name, role, builderId }) {
 
   // --- Role ---
   if (role && role.trim()) {
-    const roleY = CANVAS_H * 0.785; // Nudged down to center of yellow pill
+    const roleY = CANVAS_H * 0.772; // Centered exactly in the yellow pill
     const maxRoleWidth = CANVAS_W * 0.42;
 
     let roleFontSize = 75;
@@ -140,8 +140,8 @@ function renderTextLayers(ctx, { name, role, builderId }) {
 
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    // Bright pink/red text to match image
-    ctx.fillStyle = '#E83E5E'; 
+    // Darker pink/red text to make it pop against yellow
+    ctx.fillStyle = '#C91A4B'; 
     ctx.fillText(role.toUpperCase(), centerX, roleY);
   }
 
