@@ -274,38 +274,12 @@ export default function HomePage() {
   // SHARE TO X
   // ============================================================
 
-  const handleShare = useCallback(async () => {
-    if (!canvasRef.current || !isReady) return;
-    setSharing(true);
-    try {
-      const blob = await canvasToBlob(canvasRef.current);
+  const handleShare = useCallback(() => {
+    if (!isReady) return;
 
-      // Upload to server
-      const formData = new FormData();
-      formData.append('image', blob, 'builder-id.png');
-
-      const res = await fetch('/api/share', { method: 'POST', body: formData });
-
-      if (!res.ok) {
-        throw new Error('Upload failed');
-      }
-
-      const { shareUrl } = await res.json();
-      const baseUrl = window.location.origin;
-      const fullShareUrl = `${baseUrl}${shareUrl}`;
-
-      // Open Twitter intent
-      const tweetText = `Just built my Builder ID for Hacker Goa House 2026 🌴 #FrameInGoa`;
-      const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}&url=${encodeURIComponent(fullShareUrl)}`;
-      window.open(intentUrl, '_blank', 'noopener,noreferrer');
-    } catch (err) {
-      console.error('Share failed:', err);
-      // Fallback: share without image upload
-      const tweetText = `Just built my Builder ID for Hacker Goa House 2026 🌴 #FrameInGoa`;
-      const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
-      window.open(intentUrl, '_blank', 'noopener,noreferrer');
-    }
-    setSharing(false);
+    const tweetText = `Just built my Builder ID for Hacker House Goa 2026 🌴\n\nGet yours → hhgoa-buildercard.vercel.app\n\n#FrameInGoa #HackerHouseGoa`;
+    const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+    window.open(intentUrl, '_blank', 'noopener,noreferrer');
   }, [isReady]);
 
   // ============================================================
