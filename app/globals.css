@@ -6,14 +6,21 @@
 
 :root {
   /* Colors */
-  --color-bg-dark: #123B23; /* Dark green page background */
-  --color-panel-bg: #EDDFCA; /* Cream panel background */
-  --color-border: #123B23; /* Dark green borders */
-  --color-gold: #DF891A; /* Orange/gold for labels and share button */
+  --color-bg-dark: #123B23;
+  /* Dark green page background */
+  --color-panel-bg: #EDDFCA;
+  /* Cream panel background */
+  --color-border: #123B23;
+  /* Dark green borders */
+  --color-gold: #DF891A;
+  /* Orange/gold for labels and share button */
   --color-gold-hover: #E8952A;
-  --color-input-bg: #E7F0FF; /* Light blue input background */
-  --color-input-bg-white: #FFFFFF; /* White for select */
-  --color-red: #D23434; /* Red for asterisks and change button */
+  --color-input-bg: #E7F0FF;
+  /* Light blue input background */
+  --color-input-bg-white: #FFFFFF;
+  /* White for select */
+  --color-red: #D23434;
+  /* Red for asterisks and change button */
   --color-text-dark: #123B23;
   --color-text-white: #FFFFFF;
   --color-text-black: #000000;
@@ -21,8 +28,9 @@
   /* Fonts */
   --font-display: var(--font-bevan), 'Bevan', serif;
   --font-body: var(--font-roboto-slab), 'Roboto Slab', serif;
-  --font-pixel: var(--font-pixel), 'Courier New', monospace; /* VT323 */
-  
+  --font-pixel: var(--font-pixel), 'Courier New', monospace;
+  /* VT323 */
+
   /* Layout */
   --radius-md: 12px;
   --radius-lg: 20px;
@@ -33,7 +41,9 @@
    RESET & BASE
    =================================== */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -117,11 +127,12 @@ body {
 }
 
 .header-studio-box {
-  background-color: var(--color-bg-dark); /* dark green box */
+  background-color: var(--color-bg-dark);
+  /* dark green box */
   padding: 12px 20px;
   border-radius: 4px;
   transform: rotate(-3deg);
-  box-shadow: 2px 4px 0 rgba(0,0,0,0.2);
+  box-shadow: 2px 4px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,18 +142,18 @@ body {
   height: 40px;
   width: auto;
   object-fit: contain;
+}
+
 .page-bg {
   position: fixed;
   inset: 0;
   z-index: 0;
   background-color: var(--color-bg-dark);
   /* Arches pattern at the bottom */
-  background-image: radial-gradient(
-    circle at 50% 100%,
-    rgba(255, 255, 255, 0.03) 0%,
-    rgba(255, 255, 255, 0.03) 30%,
-    transparent 31%
-  );
+  background-image: radial-gradient(circle at 50% 100%,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.03) 30%,
+      transparent 31%);
   background-size: 100px 100px;
   background-position: bottom center;
   background-repeat: repeat-x;
@@ -197,7 +208,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 4px;
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 
 .panel-title {
@@ -226,7 +237,8 @@ body {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #4ADE80; /* Bright green */
+  background: #4ADE80;
+  /* Bright green */
 }
 
 /* ===================================
@@ -245,12 +257,14 @@ body {
 .canvas-container {
   position: relative;
   width: 100%;
-  max-width: 440px; /* Adjust based on image proportions */
+  max-width: 440px;
+  /* Adjust based on image proportions */
   aspect-ratio: 2046 / 3076;
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* Soft drop shadow on the card itself */
-  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  /* Soft drop shadow on the card itself */
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .canvas-container canvas {
@@ -264,7 +278,8 @@ body {
   font-size: 14px;
   color: var(--color-panel-bg);
   text-align: center;
-  opacity: 0; /* Hidden but keeps spacing if needed */
+  opacity: 0;
+  /* Hidden but keeps spacing if needed */
 }
 
 /* ===================================
@@ -358,7 +373,8 @@ body {
 .photo-upload-zone {
   border: 2px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: 4px; /* small padding around crop container */
+  padding: 4px;
+  /* small padding around crop container */
   background: transparent;
   display: flex;
   flex-direction: column;
@@ -460,7 +476,8 @@ body {
 .action-buttons {
   display: flex;
   gap: 16px;
-  margin-top: auto; /* Push to bottom */
+  margin-top: auto;
+  /* Push to bottom */
   padding-top: 16px;
 }
 
@@ -506,23 +523,27 @@ body {
 .skeleton-spinner {
   width: 24px;
   height: 24px;
-  border: 2px solid rgba(0,0,0,0.1);
+  border: 2px solid rgba(0, 0, 0, 0.1);
   border-top-color: var(--color-border);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 800px) {
   .panel {
     padding: 24px;
   }
+
   .action-buttons {
     flex-direction: column;
   }
+
   .panel-title {
     font-size: 24px;
   }
