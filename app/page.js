@@ -301,7 +301,24 @@ export default function HomePage() {
     <>
       <div className="page-bg" />
 
-      <main className="main-container">
+      {/* ===== HEADER ===== */}
+      <header className="main-header">
+        <div className="header-left">
+          <img src="/palmtree.png" alt="Palm Tree" className="header-palm" />
+          <img src="/hackerhousegoa.png" alt="Hacker House Goa" className="header-logo" />
+        </div>
+        
+        {/* We can add SVG waves, sparkles, or sailboats here later if needed */}
+        <div className="header-center"></div>
+
+        <div className="header-right">
+          <div className="header-studio-box">
+            <img src="/2.47logo.png" alt="2:47 PM Studio" className="header-studio-logo" />
+          </div>
+        </div>
+      </header>
+
+      <main className="main-container" style={{ marginTop: '120px' }}>
         {/* ===== PREVIEW SECTION ===== */}
         <section className="preview-section panel">
           <div className="panel-header">
