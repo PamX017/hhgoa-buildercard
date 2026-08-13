@@ -112,10 +112,10 @@ function renderTextLayers(ctx, { name, role, builderId }) {
 
     // Auto-size: start big, shrink to fit
     let fontSize = 160;
-    ctx.font = `${fontSize}px 'Bevan', serif`;
+    ctx.font = `${fontSize}px 'Rye', serif`;
     while (ctx.measureText(name.toUpperCase()).width > maxNameWidth && fontSize > 40) {
       fontSize -= 2;
-      ctx.font = `${fontSize}px 'Bevan', serif`;
+      ctx.font = `${fontSize}px 'Rye', serif`;
     }
 
     ctx.textAlign = 'center';
@@ -132,10 +132,10 @@ function renderTextLayers(ctx, { name, role, builderId }) {
     const maxRoleWidth = CANVAS_W * 0.42;
 
     let roleFontSize = 75;
-    ctx.font = `${roleFontSize}px 'Bevan', serif`;
+    ctx.font = `${roleFontSize}px 'Rye', serif`;
     while (ctx.measureText(role.toUpperCase()).width > maxRoleWidth && roleFontSize > 30) {
       roleFontSize -= 2;
-      ctx.font = `${roleFontSize}px 'Bevan', serif`;
+      ctx.font = `${roleFontSize}px 'Rye', serif`;
     }
 
     ctx.textAlign = 'center';
@@ -151,7 +151,7 @@ function renderTextLayers(ctx, { name, role, builderId }) {
 
     // Auto-size
     let idFontSize = 150;
-    ctx.font = `${idFontSize}px 'Bevan', serif`;
+    ctx.font = `${idFontSize}px 'Rye', serif`;
     
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
