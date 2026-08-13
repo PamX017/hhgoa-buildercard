@@ -107,7 +107,7 @@ function renderTextLayers(ctx, { name, role, builderId }) {
 
   // --- Name ---
   if (name && name.trim()) {
-    const nameY = CANVAS_H * 0.69; // Placed between the S-curves
+    const nameY = CANVAS_H * 0.695; // Placed perfectly between the S-curves
     const maxNameWidth = CANVAS_W * 0.75; // Wider allowance
 
     // Auto-size: start big, shrink to fit
@@ -128,7 +128,7 @@ function renderTextLayers(ctx, { name, role, builderId }) {
 
   // --- Role ---
   if (role && role.trim()) {
-    const roleY = CANVAS_H * 0.772; // Centered in the yellow pill
+    const roleY = CANVAS_H * 0.76; // Centered exactly in the yellow pill
     const maxRoleWidth = CANVAS_W * 0.42;
 
     let roleFontSize = 75;
@@ -147,7 +147,7 @@ function renderTextLayers(ctx, { name, role, builderId }) {
 
   // --- Builder ID ---
   if (builderId) {
-    const idY = CANVAS_H * 0.865; // Below the BUILDER ID: label
+    const idY = CANVAS_H * 0.865; // Centered between the bottom curly brackets
 
     // Auto-size
     let idFontSize = 150;
