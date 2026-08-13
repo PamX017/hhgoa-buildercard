@@ -418,16 +418,30 @@ export default function HomePage() {
                       onTouchMove={onTouchMove}
                       onTouchEnd={onTouchEnd}
                     >
-                      <img
-                        src={userImage.src}
-                        alt="Your photo"
-                        style={{
-                          transform: `translate(${cropState.offsetX / 10}px, ${cropState.offsetY / 10}px) scale(${cropState.scale})`,
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover',
-                        }}
-                      />
+                      <div style={{
+                        position: 'absolute',
+                        left: 0,
+                        top: 0,
+                        width: '100%',
+                        height: '100%',
+                        transform: `translate(${(cropState.offsetX / (2046 * 0.59)) * 100}%, ${(cropState.offsetY / (3076 * 0.24)) * 100}%) scale(${cropState.scale})`
+                      }}>
+                        <img
+                          src={userImage.src}
+                          alt="Your photo"
+                          style={{
+                            position: 'absolute',
+                            left: '50%',
+                            top: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            width: (userImage.naturalWidth / userImage.naturalHeight) > 1.63 ? 'auto' : '100%',
+                            height: (userImage.naturalWidth / userImage.naturalHeight) > 1.63 ? '100%' : 'auto',
+                            minWidth: '100%',
+                            minHeight: '100%',
+                            pointerEvents: 'none'
+                          }}
+                        />
+                      </div>
                     </div>
                     <div className="crop-controls">
                       <label>Zoom</label>

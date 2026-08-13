@@ -413,7 +413,7 @@ body {
   aspect-ratio: 1.63 / 1;
   overflow: hidden;
   border-radius: 8px;
-  background: #1a1a1a;
+  background: var(--color-panel-bg);
   cursor: grab;
   touch-action: none;
   user-select: none;
