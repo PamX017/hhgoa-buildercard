@@ -1,4 +1,4 @@
-import { Bevan, Anton, Roboto_Slab } from 'next/font/google';
+import { Bevan, Anton, Roboto_Slab, VT323 } from 'next/font/google';
 import './globals.css';
 
 const bevan = Bevan({
@@ -22,6 +22,13 @@ const robotoSlab = Roboto_Slab({
   display: 'swap',
 });
 
+const vt323 = VT323({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-pixel',
+  display: 'swap',
+});
+
 export const metadata = {
   title: 'Hacker Goa House 2026 — Builder ID Card Generator',
   description: 'Create your personalized Builder ID Card for Hacker Goa House 2026. Upload a photo, pick your role, and download your badge instantly. #FrameInGoa',
@@ -37,7 +44,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${bevan.variable} ${anton.variable} ${robotoSlab.variable}`}>
+    <html lang="en" className={`${bevan.variable} ${anton.variable} ${robotoSlab.variable} ${vt323.variable}`}>
       <body>
         {children}
       </body>

@@ -317,15 +317,6 @@ export default function HomePage() {
     <>
       <div className="page-bg" />
 
-      {/* Header */}
-      <header className="header">
-        <h1 className="header-title">
-          Hacker <span className="goa-text">गोवा</span> House
-        </h1>
-        <span className="header-badge">#FrameInGoa</span>
-      </header>
-
-      {/* Main */}
       <main className="main-container">
         {/* ===== PREVIEW SECTION ===== */}
         <section className="preview-section panel">
@@ -336,29 +327,28 @@ export default function HomePage() {
             </div>
             <div className="panel-status">
               <span className="status-dot" />
-              <span>Live</span>
+              Live
             </div>
           </div>
-          <div className="panel-body">
-            <div className="preview-wrapper">
-              {frameLoading ? (
-                <div className="skeleton-card">
-                  <div className="skeleton-spinner" />
-                  <span className="skeleton-text">Loading HH Goa frame...</span>
-                </div>
-              ) : (
-                <div className="canvas-container">
-                  <canvas
-                    ref={canvasRef}
-                    width={CANVAS_W}
-                    height={CANVAS_H}
-                  />
-                </div>
-              )}
-              <p className="preview-hint">
-                {userImage ? 'Looking good! Adjust your photo and details below.' : 'Add a photo to personalize'}
-              </p>
-            </div>
+          
+          <div className="preview-wrapper">
+            {frameLoading ? (
+              <div className="skeleton-card">
+                <div className="skeleton-spinner" />
+                <span className="skeleton-text">Loading frame...</span>
+              </div>
+            ) : (
+              <div className="canvas-container">
+                <canvas
+                  ref={canvasRef}
+                  width={CANVAS_W}
+                  height={CANVAS_H}
+                />
+              </div>
+            )}
+            <p className="preview-hint">
+              {userImage ? 'Looking good! Adjust your photo and details below.' : 'Add a photo to personalize'}
+            </p>
           </div>
         </section>
 
@@ -370,47 +360,46 @@ export default function HomePage() {
               <div className="panel-title">Your Builder Pass</div>
             </div>
           </div>
-          <div className="panel-body">
-            <div className="form-section">
-              {/* Builder ID chip */}
-              <div className={`builder-id-chip ${!builderIdLoading ? 'loaded' : ''}`}>
-                <span className="builder-id-label">Builder ID</span>
-                <span className={`builder-id-value ${builderIdLoading ? 'loading' : ''}`}>
-                  {builderIdLoading ? 'Generating...' : builderId}
-                </span>
-              </div>
 
-              {/* Photo upload */}
-              <div className="field-group">
-                <label className="field-label">
-                  Photo <span className="required">*</span>
-                </label>
+          <div className="form-section">
+            {/* Builder ID */}
+            <div className="builder-id-box">
+              <span className="builder-id-label">Builder ID</span>
+              <span className="builder-id-value">
+                {builderIdLoading ? '...' : builderId}
+              </span>
+            </div>
 
+            {/* Photo upload */}
+            <div className="field-group">
+              <label className="field-label">
+                Photo <span className="required">*</span>
+              </label>
+
+              <div className="photo-upload-zone">
                 {!userImage ? (
                   <div
-                    className="photo-upload-zone"
+                    className="photo-empty-state"
                     onClick={() => fileInputRef.current?.click()}
                     onDrop={onDrop}
                     onDragOver={onDragOver}
                     role="button"
                     tabIndex={0}
-                    onKeyDown={(e) => { if (e.key === 'Enter') fileInputRef.current?.click(); }}
                   >
                     {heicConverting ? (
-                      <div className="heic-overlay">
-                        <div className="skeleton-spinner" />
-                        <span>Converting HEIC photo...</span>
+                      <div>
+                        <div className="skeleton-spinner" style={{ margin: '0 auto' }} />
+                        <span style={{ fontSize: '14px', marginTop: '8px', display: 'block' }}>Converting...</span>
                       </div>
                     ) : (
                       <>
                         <div className="upload-icon">↑</div>
-                        <div className="upload-text">Drop photo or tap to upload</div>
-                        <div className="upload-formats">JPG • PNG • WEBP • HEIC</div>
+                        <div className="upload-text">Click or drop photo</div>
                       </>
                     )}
                   </div>
                 ) : (
-                  <div className="photo-upload-zone has-photo">
+                  <>
                     <div
                       className="crop-container"
                       ref={cropContainerRef}
@@ -432,7 +421,6 @@ export default function HomePage() {
                           objectFit: 'cover',
                         }}
                       />
-                      <div className="crop-overlay" />
                     </div>
                     <div className="crop-controls">
                       <label>Zoom</label>
@@ -455,87 +443,74 @@ export default function HomePage() {
                         Change
                       </button>
                     </div>
-                  </div>
+                  </>
                 )}
-
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept="image/jpeg,image/png,image/webp,image/heic,image/heif,.heic,.heif"
-                  onChange={onFileInputChange}
-                  style={{ display: 'none' }}
-                  id="photo-input"
-                />
               </div>
 
-              {/* Name */}
-              <div className="field-group">
-                <label className="field-label" htmlFor="name-input">
-                  Name <span className="required">*</span>
-                </label>
-                <input
-                  id="name-input"
-                  type="text"
-                  className="field-input"
-                  placeholder="e.g. Satoshi Nakamoto"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  maxLength={30}
-                  autoComplete="name"
-                />
-              </div>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/jpeg,image/png,image/webp,image/heic,image/heif,.heic,.heif"
+                onChange={onFileInputChange}
+                style={{ display: 'none' }}
+              />
+            </div>
 
-              {/* Role */}
-              <div className="field-group">
-                <label className="field-label" htmlFor="role-select">
-                  Role <span className="required">*</span>
-                </label>
-                <select
-                  id="role-select"
-                  className="field-select"
-                  value={role}
-                  onChange={(e) => setRole(e.target.value)}
-                >
-                  <option value="" disabled>Select your role</option>
-                  {ROLES.map((r) => (
-                    <option key={r} value={r}>{r}</option>
-                  ))}
-                </select>
-              </div>
+            {/* Name */}
+            <div className="field-group">
+              <label className="field-label" htmlFor="name-input">
+                Name <span className="required">*</span>
+              </label>
+              <input
+                id="name-input"
+                type="text"
+                className="field-input"
+                placeholder="Pranav Shewale"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                maxLength={30}
+                autoComplete="name"
+              />
+            </div>
 
-              {/* Action buttons */}
-              <div className="action-buttons">
-                <button
-                  className="btn btn-download"
-                  onClick={handleDownload}
-                  disabled={!isReady}
-                  id="download-btn"
-                >
-                  ⬇ Download
-                </button>
-                <button
-                  className="btn btn-share"
-                  onClick={handleShare}
-                  disabled={!isReady || sharing}
-                  id="share-btn"
-                >
-                  {sharing ? (
-                    <><span className="btn-spinner" /> Uploading...</>
-                  ) : (
-                    '𝕏 Share on X'
-                  )}
-                </button>
-              </div>
+            {/* Role */}
+            <div className="field-group">
+              <label className="field-label" htmlFor="role-select">
+                Role <span className="required">*</span>
+              </label>
+              <select
+                id="role-select"
+                className="field-select"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+              >
+                <option value="" disabled>Select your role</option>
+                {ROLES.map((r) => (
+                  <option key={r} value={r}>{r}</option>
+                ))}
+              </select>
+            </div>
 
-              <p className="validation-hint">{getValidationHint()}</p>
+            {/* Action buttons */}
+            <div className="action-buttons">
+              <button
+                className="btn btn-download"
+                onClick={handleDownload}
+                disabled={!isReady}
+              >
+                ↓ Download
+              </button>
+              <button
+                className="btn btn-share"
+                onClick={handleShare}
+                disabled={!isReady || sharing}
+              >
+                {sharing ? 'Uploading...' : '𝕏 Share on X'}
+              </button>
             </div>
           </div>
         </section>
       </main>
-
-      <footer className="footer">
-        Hacker Goa House 2026 · 28–31 Oct · Goa, India
-      </footer>
     </>
   );
 }
