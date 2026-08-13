@@ -107,62 +107,56 @@ function renderTextLayers(ctx, { name, role, builderId }) {
 
   // --- Name ---
   if (name && name.trim()) {
-    const nameY = CANVAS_H * NAME_Y_PCT;
-    const maxNameWidth = CANVAS_W * 0.52; // Fit between ornaments
+    const nameY = CANVAS_H * 0.69; // Placed between the S-curves
+    const maxNameWidth = CANVAS_W * 0.75; // Wider allowance
 
     // Auto-size: start big, shrink to fit
-    let fontSize = 90;
-    ctx.font = `bold ${fontSize}px 'Bevan', serif`;
-    while (ctx.measureText(name.toUpperCase()).width > maxNameWidth && fontSize > 30) {
+    let fontSize = 160;
+    ctx.font = `${fontSize}px 'Bevan', serif`;
+    while (ctx.measureText(name.toUpperCase()).width > maxNameWidth && fontSize > 40) {
       fontSize -= 2;
-      ctx.font = `bold ${fontSize}px 'Bevan', serif`;
+      ctx.font = `${fontSize}px 'Bevan', serif`;
     }
 
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
 
-    // Dark green text with subtle shadow
-    ctx.shadowColor = 'rgba(0, 0, 0, 0.15)';
-    ctx.shadowBlur = 4;
-    ctx.shadowOffsetX = 2;
-    ctx.shadowOffsetY = 2;
+    // Dark green text
     ctx.fillStyle = '#0A3A1E';
     ctx.fillText(name.toUpperCase(), centerX, nameY);
-
-    // Reset shadow
-    ctx.shadowColor = 'transparent';
-    ctx.shadowBlur = 0;
-    ctx.shadowOffsetX = 0;
-    ctx.shadowOffsetY = 0;
   }
 
   // --- Role ---
   if (role && role.trim()) {
-    const roleY = CANVAS_H * ROLE_Y_PCT;
+    const roleY = CANVAS_H * 0.772; // Centered in the yellow pill
     const maxRoleWidth = CANVAS_W * 0.42;
 
-    let roleFontSize = 58;
-    ctx.font = `${roleFontSize}px 'Anton', sans-serif`;
-    while (ctx.measureText(role.toUpperCase()).width > maxRoleWidth && roleFontSize > 24) {
+    let roleFontSize = 75;
+    ctx.font = `${roleFontSize}px 'Bevan', serif`;
+    while (ctx.measureText(role.toUpperCase()).width > maxRoleWidth && roleFontSize > 30) {
       roleFontSize -= 2;
-      ctx.font = `${roleFontSize}px 'Anton', sans-serif`;
+      ctx.font = `${roleFontSize}px 'Bevan', serif`;
     }
 
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillStyle = '#0A3A1E';
+    // Bright pink/red text to match image
+    ctx.fillStyle = '#E83E5E'; 
     ctx.fillText(role.toUpperCase(), centerX, roleY);
   }
 
   // --- Builder ID ---
   if (builderId) {
-    const idY = CANVAS_H * BUILDER_ID_Y_PCT;
+    const idY = CANVAS_H * 0.865; // Below the BUILDER ID: label
 
-    ctx.font = `bold 52px 'Roboto Slab', serif`;
+    // Auto-size
+    let idFontSize = 150;
+    ctx.font = `${idFontSize}px 'Bevan', serif`;
+    
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillStyle = '#0A3A1E';
-    ctx.fillText(builderId, centerX + CANVAS_W * 0.08, idY);
+    ctx.fillText(builderId, centerX, idY);
   }
 }
 
