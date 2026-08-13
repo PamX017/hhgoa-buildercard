@@ -193,6 +193,15 @@ body {
   flex-direction: column;
 }
 
+/* Swap column order: Form on left (1), Preview on right (2) */
+.form-section.panel {
+  order: 1;
+}
+
+.preview-section.panel {
+  order: 2;
+}
+
 /* Panel Header */
 .panel-header {
   margin-bottom: 24px;
