@@ -305,7 +305,13 @@ export default function HomePage() {
       <header className="main-header">
         <div className="header-left">
           <img src="/palmtree.png" alt="Palm Tree" className="header-palm" />
-          <img src="/hackerhousegoa.png" alt="Hacker House Goa" className="header-logo" />
+          <img 
+            src="/hackerhousegoa.png" 
+            alt="Hacker House Goa" 
+            className="header-logo" 
+            onClick={() => window.location.reload()}
+            style={{ cursor: 'pointer' }}
+          />
         </div>
         
         {/* We can add SVG waves, sparkles, or sailboats here later if needed */}
@@ -318,7 +324,7 @@ export default function HomePage() {
         </div>
       </header>
 
-      <main className="main-container" style={{ marginTop: '120px' }}>
+      <main className="main-container" style={{ marginTop: '96px' }}>
         {/* ===== PREVIEW SECTION ===== */}
         <section className="preview-section panel">
           <div className="panel-header">
