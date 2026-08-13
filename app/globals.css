@@ -188,14 +188,14 @@ body {
   background: var(--color-panel-bg);
   border-radius: var(--radius-lg);
   border: 2px solid var(--color-border);
-  padding: 24px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
 }
 
 /* Panel Header */
 .panel-header {
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -257,7 +257,7 @@ body {
 .canvas-container {
   position: relative;
   width: 100%;
-  max-width: 320px;
+  max-width: 440px;
   /* Adjust based on image proportions */
   aspect-ratio: 2046 / 3076;
   border-radius: 4px;
@@ -381,7 +381,7 @@ body {
 }
 
 .photo-empty-state {
-  padding: 32px 16px;
+  padding: 48px 24px;
   text-align: center;
   cursor: pointer;
 }
