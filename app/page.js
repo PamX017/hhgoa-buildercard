@@ -28,6 +28,7 @@ export default function HomePage() {
 
   const [frameImage, setFrameImage] = useState(null);
   const [frameLoading, setFrameLoading] = useState(true);
+  const [fontsLoaded, setFontsLoaded] = useState(false);
   const [heicConverting, setHeicConverting] = useState(false);
   const [sharing, setSharing] = useState(false);
 
@@ -41,10 +42,19 @@ export default function HomePage() {
   const pinchRef = useRef({ pinching: false, startDist: 0, startScale: 1 });
 
   // ============================================================
-  // LOAD FRAME IMAGE ON MOUNT
+  // WAIT FOR FONTS & LOAD FRAME IMAGE ON MOUNT
   // ============================================================
 
   useEffect(() => {
+    // Force a re-render when custom fonts are fully loaded by the browser
+    if (document.fonts) {
+      document.fonts.ready.then(() => {
+        setFontsLoaded(true);
+      });
+    } else {
+      setFontsLoaded(true);
+    }
+
     const img = new Image();
     img.crossOrigin = 'anonymous';
     img.onload = () => {
@@ -98,7 +108,7 @@ export default function HomePage() {
       role,
       builderId: builderId || '',
     });
-  }, [userImage, cropState, frameImage, name, role, builderId, frameLoading]);
+  }, [userImage, cropState, frameImage, name, role, builderId, frameLoading, fontsLoaded]);
 
   // ============================================================
   // PHOTO UPLOAD HANDLER
